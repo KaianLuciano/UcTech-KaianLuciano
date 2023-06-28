@@ -14,9 +14,9 @@ public class EmpresaController {
     final CnpjService cnpjService;
 
     @GetMapping("/{cnpjEmpresa}")
-    public ResponseEntity<ResponseEntity<EmpresaModel>> consultarEmpresa(@PathVariable(value = "cnpjEmpresa") String cnpj) {
+    public ResponseEntity<EmpresaModel> consultarEmpresa(@PathVariable(value = "cnpjEmpresa") String cnpj) {
 
-        ResponseEntity<EmpresaModel> empresa = cnpjService.retornaEmpresa(cnpj);
+        EmpresaModel empresa = cnpjService.retornaEmpresa(cnpj);
         return ResponseEntity.ok(empresa);
     }
 }

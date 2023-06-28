@@ -1,5 +1,6 @@
 package com.uctech.desafio.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.uctech.desafio.model.enums.SituacaoCadastral;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,30 +26,46 @@ public class EmpresaModel implements Serializable {
     @Column(nullable = false, unique = true, length = 2)
     private String uf;
 
-    private String razao_social;
+    @Column(name = "nome_empresa")
+    @JsonAlias("razao_social")
+    private String nomeEmpresa;
 
-    private String nome_fantasia;
+    @Column(name = "nome_fantasia")
+    @JsonAlias("nome_fantasia")
+    private String nomeFantasia;
 
     @Column(name = "data_inicio_atividade")
+    @JsonAlias("data_inicio_atividade")
     @DateTimeFormat(pattern = "dd/MM/yy")
-    private Date data_inicio_atividade;
+    private Date dataInicioAtividade;
 
-    private String natureza_juridica;
+    @JsonAlias("natureza_juridica")
+    private String naturezaJuridica;
 
     @Column(name = "situacao_cadastral")
+    @JsonAlias("situacao_cadastral")
     @Enumerated(EnumType.STRING)
-    private SituacaoCadastral situacao_cadastral;
+    private SituacaoCadastral situacaoCadastral;
 
     @Column(name = "data_situacao_cadastral")
+    @JsonAlias("data_situacao_cadastral")
     @DateTimeFormat(pattern = "dd/MM/yy")
-    private Date data_situacao_cadastral;
+    private Date dataSituacaoCadastral;
 
-    private String qualificacao_do_responsavel;
+    @Column(name = "qualificacao_do_responsavel")
+    @JsonAlias("qualificacao_do_responsavel")
+    private String qualificacaoDoResponsavel;
 
-    private Long capital_social;
+    @Column(name = "capital_social")
+    @JsonAlias("capital_social")
+    private Long capitalSocial;
 
-    private String porte;
+    @Column(name = "porte_da_empresa")
+    @JsonAlias("porte")
+    private String porteDaEmpresa;
 
-    private boolean opcao_pelo_mei;
+    @Column(name = "opcao_pelo_mei")
+    @JsonAlias("opcao_pelo_mei")
+    private boolean opcaoMei;
 
 }
