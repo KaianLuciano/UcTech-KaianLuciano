@@ -35,6 +35,13 @@ public class EmpresaService {
 
     }
 
+    public ResponseEntity<Object> findEmpresaModelByNomeFantasia(String nomeFantasia) {
+
+        EmpresaModel empresa = empresaRepository.findEmpresaModelByNomeFantasia(nomeFantasia);
+        return empresa != null ? new ResponseEntity<>(empresa, HttpStatus.NOT_FOUND) : new ResponseEntity<>("Empresa com o nome inserido não existe", HttpStatus.NOT_FOUND);
+
+    }
+
     public ResponseEntity<Object> findAll(){
         List<EmpresaModel> empresas = empresaRepository.findAll();
 

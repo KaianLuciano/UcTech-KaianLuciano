@@ -4,7 +4,6 @@ import com.uctech.desafio.model.EmpresaModel;
 import com.uctech.desafio.service.CnpjService;
 import com.uctech.desafio.service.EmpresaService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.repository.config.RepositoryNameSpaceHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +33,11 @@ public class EmpresaController {
     @GetMapping("/{cnpj}")
     ResponseEntity<Object> findById(@PathVariable(value = "cnpj") String cnpj) {
         return ResponseEntity.status(HttpStatus.OK).body(empresaService.findById(cnpj));
+    }
+
+    @GetMapping("/nome/{nomeFantasia}")
+    ResponseEntity<Object> findEmpresaModelByNomeFantasia(@PathVariable(value = "nomeFantasia") String nomeFantasia) {
+        return ResponseEntity.status(HttpStatus.OK).body(empresaService.findEmpresaModelByNomeFantasia(nomeFantasia));
     }
 
     @PostMapping("/{cnpj}")
