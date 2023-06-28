@@ -4,6 +4,8 @@ import com.uctech.desafio.model.EmpresaModel;
 import com.uctech.desafio.repository.EmpresaRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,47 +21,59 @@ public class EmpresaService {
     final CnpjService cnpjService;
 
 
-    public EmpresaModel findById(String cnpj) {
+    public ResponseEntity<Object> findById(String cnpj) {
 
-        /*
-        Fazer validações com Optional como isPresent
-         */
-
-        String cnpjFormatado = cnpj.replaceAll("[\\.-]", "");
+        String cnpjFormatado = cnpj.replaceAll("[.-]", "");
 
         Optional<EmpresaModel> empresaModel = empresaRepository.findById(cnpjFormatado);
 
-        return empresaModel.get();
+        if(empresaModel.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não possui uma empresa atrelada ao cnpj especificado");
+        } else {
+            return ResponseEntity.ok(empresaModel.get());
+        }
+
     }
 
-    public List<EmpresaModel> findAll(){
+    public ResponseEntity<Object> findAll(){
         List<EmpresaModel> empresas = empresaRepository.findAll();
-        return empresas;
+
+        if(empresas.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Lista de Empresas Vazia");
+        } else {
+            return ResponseEntity.ok(empresas);
+        }
+
     }
 
     @Transactional
-    public String saveEmpresa(String cnpj) {
+    public ResponseEntity<Object> saveEmpresa(String cnpj) {
 
         /*
         Fazer validação necessarias
          */
 
         EmpresaModel empresa = cnpjService.retornaEmpresa(cnpj);
+
         empresaRepository.save(empresa);
-        return "Salvo com sucesos";
+        return ResponseEntity.ok("Empresa salva com sucesos!");
     }
 
     @Transactional
-    public String deleteEmpresa(String cnpj) {
+    public ResponseEntity<Object> deleteEmpresa(String cnpj) {
 
         /*
         Fazer validação necessarias
         Formatar o cnpj caso possua [. -] para deletar a empresa sem grandes problemas
          */
 
-        String cnpjFormatado = cnpj.replaceAll("[\\.-]", "");
+        String cnpjFormatado = cnpj.replaceAll("[.-]", "");
+
+        if(empresaRepository.findById(cnpjFormatado).isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não existe empresa com o CNPJ inserido!");
+        }
 
         empresaRepository.deleteById(cnpjFormatado);
-        return "Produto Deletado!!";
+        return ResponseEntity.ok("Empresa excluida");
     }
 }
