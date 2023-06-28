@@ -2,8 +2,6 @@ package com.uctech.desafio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 public class DesafioApplication {
@@ -12,4 +10,5 @@ public class DesafioApplication {
 		SpringApplication.run(DesafioApplication.class, args);
 	}
 
+	// Url usada para testes: https://brasilapi.com.br/api/cnpj/v1/15.684.307000126
 }

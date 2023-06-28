@@ -26,9 +26,9 @@ public class EmpresaModel implements Serializable {
     @Column(nullable = false, unique = true, length = 2)
     private String uf;
 
-    @Column(name = "nome_empresa")
+    @Column(name = "razao_social")
     @JsonAlias("razao_social")
-    private String nomeEmpresa;
+    private String razaoSocial;
 
     @Column(name = "nome_fantasia")
     @JsonAlias("nome_fantasia")
