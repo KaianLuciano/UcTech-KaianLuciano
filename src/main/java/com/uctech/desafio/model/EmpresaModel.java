@@ -23,38 +23,32 @@ public class EmpresaModel implements Serializable {
     private String cnpj;
 
     @Column(nullable = false, unique = true, length = 2)
-    private char uf;
+    private String uf;
 
-    @Column(name = "nome_empresa")
-    private String nomeEmpresa;
+    private String razao_social;
 
-    @Column(name = "nome_fantasia")
-    private String nomeFantasia;
+    private String nome_fantasia;
 
     @Column(name = "data_inicio_atividade")
     @DateTimeFormat(pattern = "dd/MM/yy")
-    private Date dataInicioAtividade;
+    private Date data_inicio_atividade;
 
-    private String naturezaJuridica;
+    private String natureza_juridica;
 
     @Column(name = "situacao_cadastral")
     @Enumerated(EnumType.STRING)
-    private SituacaoCadastral situacaoCadastral;
+    private SituacaoCadastral situacao_cadastral;
 
     @Column(name = "data_situacao_cadastral")
     @DateTimeFormat(pattern = "dd/MM/yy")
-    private Date dataSituacaoCadastral;
+    private Date data_situacao_cadastral;
 
-    @Column(name = "qualificacao_do_responsavel")
-    private String qualificacaoDoResponsavel;
+    private String qualificacao_do_responsavel;
 
-    @Column(name = "capital_social")
-    private Long capitalSocial;
+    private Long capital_social;
 
-    @Column(name = "porte_da_empresa")
-    private String porteDaEmpresa;
+    private String porte;
 
-    @Column(name = "opcao_mei")
-    private boolean opcaoMei;
+    private boolean opcao_pelo_mei;
 
 }
