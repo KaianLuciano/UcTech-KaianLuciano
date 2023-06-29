@@ -14,10 +14,10 @@ UcTech
 
 #### Começando
 
-Obs: Caso não possua a jDK o proprio intelij irá indentificar e apresentar-lhe um botão para instalar o mesmo.
-Abra o projeto selecionanto o pom.xml do mesmo ao invés do folder, em seguida aguarde a instalação das dependências
-Troque a senha e usuario do arquivo application.properties para a senha e usuario que correspondam a sua autenticação no banco.
-Crie um novo Schema no banco de dados intitulado de dbdesafio
-Basta agora rodar a aplicação apertando o play no canto superior
+<p>Obs: Caso não possua a jDK o proprio intelij irá indentificar e apresentar-lhe um botão para instalar o mesmo</p>
+<p>Abra o projeto selecionanto o pom.xml do mesmo ao invés do folder, em seguida aguarde a instalação das dependências</p>
+<p>Troque a senha e usuario do arquivo application.properties para a senha e usuario que correspondam a sua autenticação no banco.</p>
+<p>Crie um novo Schema no banco de dados intitulado de dbdesafio</p>
+<p>Basta agora rodar a aplicação apertando o play no canto superior</p>
 
-Pronto agora o Back-End estára rodando, em seguida instale o front-end em https://github.com/KaianLuciano/UcTech-KaianLuciano-Front-End
+<p>Pronto agora o Back-End estára rodando, em seguida instale o front-end em https://github.com/KaianLuciano/UcTech-KaianLuciano-Front-End</p>
