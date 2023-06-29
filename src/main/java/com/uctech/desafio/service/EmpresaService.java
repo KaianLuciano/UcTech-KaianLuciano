@@ -27,11 +27,7 @@ public class EmpresaService {
 
         Optional<EmpresaModel> empresaModel = empresaRepository.findById(cnpjFormatado);
 
-        if(empresaModel.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não possui uma empresa atrelada ao cnpj especificado");
-        } else {
-            return ResponseEntity.ok(empresaModel.get());
-        }
+        return empresaModel.isEmpty() ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não possui uma empresa atrelada ao cnpj especificado") : ResponseEntity.ok(empresaModel.get());
 
     }
 
@@ -44,20 +40,13 @@ public class EmpresaService {
 
     public ResponseEntity<Object> findAll(){
         List<EmpresaModel> empresas = empresaRepository.findAll();
-
-        if(empresas.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Lista de Empresas Vazia");
-        } else {
-            return ResponseEntity.ok(empresas);
-        }
-
+        return empresas.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).body("Lista de Empresas Vazia") : ResponseEntity.ok(empresas);
     }
 
     @Transactional
     public ResponseEntity<Object> saveEmpresa(String cnpj) {
-
         /*
-        Fazer validação necessarias
+        Validar se já existe empresa com o cnpj especificado
          */
 
         EmpresaModel empresa = cnpjService.retornaEmpresa(cnpj);

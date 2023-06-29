@@ -23,7 +23,7 @@ public class EmpresaModel implements Serializable {
     @Id
     private String cnpj;
 
-    @Column(nullable = false, unique = true, length = 2)
+    @Column(nullable = false, length = 2)
     private String uf;
 
     @Column(name = "razao_social")
