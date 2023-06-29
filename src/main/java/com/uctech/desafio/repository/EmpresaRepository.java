@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmpresaRepository extends JpaRepository<EmpresaModel, String> {
 
-    EmpresaModel findEmpresaModelByNomeFantasia(String nomeFantasia);
+    EmpresaModel findEmpresaModelByRazaoSocial(String razaoSocial);
 
 }

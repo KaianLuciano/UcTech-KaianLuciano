@@ -17,14 +17,6 @@ public class EmpresaController {
 
     final EmpresaService empresaService;
 
-    //Método utilizado para testes
-    @GetMapping("/consultar/api/{cnpj}")
-    public ResponseEntity<EmpresaModel> consultarEmpresa(@PathVariable(value = "cnpj") String cnpj) {
-
-        EmpresaModel empresa = cnpjService.retornaEmpresa(cnpj);
-        return ResponseEntity.ok(empresa);
-    }
-
     @GetMapping
     public ResponseEntity<Object> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(empresaService.findAll());
@@ -35,9 +27,9 @@ public class EmpresaController {
         return ResponseEntity.status(HttpStatus.OK).body(empresaService.findById(cnpj));
     }
 
-    @GetMapping("/nome/{nomeFantasia}")
-    ResponseEntity<Object> findEmpresaModelByNomeFantasia(@PathVariable(value = "nomeFantasia") String nomeFantasia) {
-        return ResponseEntity.status(HttpStatus.OK).body(empresaService.findEmpresaModelByNomeFantasia(nomeFantasia));
+    @GetMapping("/nome/{razaoSocial}")
+    ResponseEntity<Object> findEmpresaModelByNomeFantasia(@PathVariable(value = "razaoSocial") String razaoSocial) {
+        return ResponseEntity.status(HttpStatus.OK).body(empresaService.findEmpresaModelByRazaoSocial(razaoSocial));
     }
 
     @PostMapping("/{cnpj}")

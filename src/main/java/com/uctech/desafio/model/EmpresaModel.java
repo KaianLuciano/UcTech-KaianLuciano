@@ -37,7 +37,7 @@ public class EmpresaModel implements Serializable {
     @Column(name = "data_inicio_atividade")
     @JsonAlias("data_inicio_atividade")
     @DateTimeFormat(pattern = "dd/MM/yy")
-    private Date dataInicioAtividade;
+    private String dataInicioAtividade;
 
     @JsonAlias("natureza_juridica")
     private String naturezaJuridica;
@@ -50,7 +50,7 @@ public class EmpresaModel implements Serializable {
     @Column(name = "data_situacao_cadastral")
     @JsonAlias("data_situacao_cadastral")
     @DateTimeFormat(pattern = "dd/MM/yy")
-    private Date dataSituacaoCadastral;
+    private String dataSituacaoCadastral;
 
     @Column(name = "qualificacao_do_responsavel")
     @JsonAlias("qualificacao_do_responsavel")
