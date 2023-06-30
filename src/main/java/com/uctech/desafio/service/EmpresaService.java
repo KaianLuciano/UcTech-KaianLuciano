@@ -42,9 +42,16 @@ public class EmpresaService {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Já existe uma empresa com o CNPJ fornecido!");
         }
 
-        EmpresaModel empresa = cnpjService.retornaEmpresa(cnpj);
-        empresaRepository.save(empresa);
-        return ResponseEntity.ok("Empresa salva com sucesos!");
+        ResponseEntity<Object> empresaResponse = cnpjService.retornaEmpresa(cnpj);
+
+        if (empresaResponse.getStatusCode().value() == HttpStatus.OK.value()) {
+            EmpresaModel empresa = (EmpresaModel) empresaResponse.getBody();
+            empresaRepository.save(empresa);
+            return ResponseEntity.ok("Empresa salva com sucesos!");
+        } else {
+            return empresaResponse;
+        }
+
     }
 
     @Transactional
