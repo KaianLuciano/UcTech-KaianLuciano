@@ -4,7 +4,6 @@ import com.uctech.desafio.model.EmpresaModel;
 import com.uctech.desafio.repository.EmpresaRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.hibernate.NonUniqueResultException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,9 +22,7 @@ public class EmpresaService {
 
 
     public ResponseEntity<Object> findById(String cnpj) {
-
         Optional<EmpresaModel> empresaModel = empresaRepository.findById(cnpj);
-
         return empresaModel.isEmpty() ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não possui uma empresa atrelada ao cnpj especificado") : ResponseEntity.ok(empresaModel.get());
     }
 
@@ -41,7 +38,7 @@ public class EmpresaService {
 
     @Transactional
     public ResponseEntity<Object> saveEmpresa(String cnpj) {
-        if(empresaRepository.findById(cnpj).isPresent() == true) {
+        if(empresaRepository.findById(cnpj).isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Já existe uma empresa com o CNPJ fornecido!");
         }
 

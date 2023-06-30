@@ -16,17 +16,4 @@ public enum SituacaoCadastral {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public static boolean isValidValue(int value) {
-        for (SituacaoCadastral pedido : SituacaoCadastral.values()) {
-            if (pedido.getValue() == value) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 }

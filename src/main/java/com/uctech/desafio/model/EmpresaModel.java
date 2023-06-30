@@ -10,7 +10,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name = "tb_empresa")
@@ -44,7 +43,7 @@ public class EmpresaModel implements Serializable {
 
     @Column(name = "situacao_cadastral")
     @JsonAlias("situacao_cadastral")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private SituacaoCadastral situacaoCadastral;
 
     @Column(name = "data_situacao_cadastral")
