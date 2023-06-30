@@ -8,13 +8,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class CnpjService {
     public EmpresaModel retornaEmpresa(String cnpj) {
 
-        String url = "https://brasilapi.com.br/api/cnpj/v1/";
-        String uri = "https://brasilapi.com.br/api/cnpj/v1/{cnpj}";
-
         return  WebClient
-                .create(url)
+                .create("https://brasilapi.com.br/api/cnpj/v1/")
                 .get()
-                .uri(uri, cnpj)
+                .uri("https://brasilapi.com.br/api/cnpj/v1/{cnpj}", cnpj)
                 .retrieve()
                 .bodyToMono(EmpresaModel.class).block();
 
